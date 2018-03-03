@@ -38,7 +38,7 @@ class Sakurai(discord.Client):
 		print(self.config)
 
 	async def on_message(self, message):
-		if message.content.startswith(config['default_prefix']):
+		if message.content.startswith(config['default_prefix']) and not message.author.bot:
 			embed = embedwriter(config, message)
 			cmd = message.content.split(' ')[0].replace(config['default_prefix'], "") # Get the command invoked
 			if cmd in self.plugins: # Is the command a plguin?
